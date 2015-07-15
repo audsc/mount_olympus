@@ -1,0 +1,40 @@
+<script type='text/javascript'>
+$(function() {
+  // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
+  Dashing.gridsterLayout('[{"col":1,"row":1,"size_x":3,"size_y":1},{"col":4,"row":1,"size_x":2,"size_y":1},{"col":1,"row":2,"size_x":3,"size_y":1},{"col":4,"row":2,"size_x":2,"size_y":2},{"col":1,"row":3,"size_x":3,"size_y":1}]')
+  Dashing.widget_base_dimensions = [380, 360]
+  Dashing.numColumns = 5
+  Dashing.numRows = 3
+});
+</script>
+
+<% content_for :title do %>Pipedrive Dashboard<% end %>
+
+<div class="gridster">
+  <ul>
+
+    <li data-row="1" data-col="1" data-sizex="3" data-sizey="1">
+      <div data-id="month_value" data-view="Rickshawgraph" data-renderer="bar" data-summary-method="last" data-legend="false" data-title="Value in Pipeline" data-min="0" data-max="10000" style="background-color:##89AC7E;"></div>
+    </li>
+    
+    <li data-row="1" data-col="4" data-sizex="2" data-sizey="1">
+      <div data-view="Image" data-image="/racery.png"></div>
+    </li>
+    
+    
+    <li data-row="2" data-col="1" data-sizex="3" data-sizey="1">
+      <div data-id="velocitytrend" data-view="Rickshawgraph" data-renderer="bar" data-summary-method="last" data-legend="false" data-title="Velocity Trend" data-min="0" data-max="40"></div>
+    </li>
+    
+    <li data-row="2" data-col="4" data-sizex="2" data-sizey="2">
+      <div data-id="overall_pipeline" data-view="Number" style="background-color:#4b4b4b;" data-moreinfo="Current Value in Pipeline"></div>
+    </li>
+    
+
+    <li data-row="3" data-col="1" data-sizex="3" data-sizey="1">
+      <div data-id="month_count" data-view="Rickshawgraph" data-renderer="bar" data-summary-method="last" data-legend="false" data-title="Deals in Pipeline" data-min="0" data-max="40" style="background-color:##89AC7E;"></div>
+    </li>
+    
+
+  </ul>
+</div>
