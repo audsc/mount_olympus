@@ -6,7 +6,10 @@ pipedrive_api = ENV['PIPEDRIVE_API']
 
 SCHEDULER.every '1m', :first_in => 0 do |job|
   root = "https://api.pipedrive.com/v1"
-  body = "deals/timeline?start_date=2015-02-00&interval=month&amount=6&field_key=add_time&pipeline_id=1&exclude_deals=1"
+  d = Date.today << 5
+  ye = format('%04d', d.year)
+  m = format('%02d', d.month)
+  body = "deals/timeline?start_date=#{ye}-#{m}-00&interval=month&amount=6&field_key=add_time&pipeline_id=1&exclude_deals=1"
   uri = "#{root}/#{body}&api_token=#{pipedrive_api}"
   response = HTTParty.get(uri)
   months = JSON.load(response.body)['data']
